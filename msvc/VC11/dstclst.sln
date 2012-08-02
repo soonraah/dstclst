@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dstclstTest", "dstclstTest\dstclstTest.vcxproj", "{37DAFFCD-032B-4BAE-83E1-871789679E0F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE1F55EF-302A-4508-83E3-9E369B735DC9} = {FE1F55EF-302A-4508-83E3-9E369B735DC9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dstclst", "dstclst\dstclst.vcxproj", "{FE1F55EF-302A-4508-83E3-9E369B735DC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37DAFFCD-032B-4BAE-83E1-871789679E0F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{37DAFFCD-032B-4BAE-83E1-871789679E0F}.Debug|Win32.Build.0 = Debug|Win32
+		{37DAFFCD-032B-4BAE-83E1-871789679E0F}.Release|Win32.ActiveCfg = Release|Win32
+		{37DAFFCD-032B-4BAE-83E1-871789679E0F}.Release|Win32.Build.0 = Release|Win32
+		{FE1F55EF-302A-4508-83E3-9E369B735DC9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FE1F55EF-302A-4508-83E3-9E369B735DC9}.Debug|Win32.Build.0 = Debug|Win32
+		{FE1F55EF-302A-4508-83E3-9E369B735DC9}.Release|Win32.ActiveCfg = Release|Win32
+		{FE1F55EF-302A-4508-83E3-9E369B735DC9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
