@@ -1,0 +1,7 @@
+Library for bottom up clustering (unsuperviesed classification) by C++.
+Now only for MSVC++.
+https://github.com/sonoyu/dstclst
+
+Test project is included.
+It depends on googletest.
+http://code.google.com/p/googletest/
