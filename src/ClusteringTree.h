@@ -104,6 +104,8 @@ namespace dstclst
 		LanceWilliamsUpdatingFormula*		pUpdatingFormula_;		//! 更新式ファンクタへのポインタ
 
 		bool								memorySavingMode_;		//! メモリ節約優先の場合true
+
+		unsigned short						lastClusterId_;			//! 最後に作成されたクラスタのID
 	};
 }
 

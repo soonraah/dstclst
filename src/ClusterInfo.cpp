@@ -12,14 +12,14 @@ using namespace dstclst;
 
 
 //! コンストラクタ
-ClusterInfo::ClusterInfo() : members_( 0 ), child1_( NULL ), child2_( NULL ), mergeCost_( 0.0f ), hook_( NULL )
+ClusterInfo::ClusterInfo() : members_( 0 ), child1_( NULL ), child2_( NULL ), mergeCost_( 0.0f ), id_( 0 )
 {
 }
 
 
 //! コンストラクタ（マージ）
-ClusterInfo::ClusterInfo( const ClusterInfo* child1, const ClusterInfo* child2, float mergeCost )
-	: members_( 0 ), child1_( child1 ), child2_( child2 ), mergeCost_( mergeCost ), hook_( NULL )
+ClusterInfo::ClusterInfo( const ClusterInfo* child1, const ClusterInfo* child2, float mergeCost, unsigned short id )
+	: members_( 0 ), child1_( child1 ), child2_( child2 ), mergeCost_( mergeCost ), id_( id )
 {
 	// 子クラスタのポインタチェック
 	if( child1_ == NULL )
@@ -44,24 +44,8 @@ ClusterInfo::ClusterInfo( const ClusterInfo* child1, const ClusterInfo* child2, 
 ClusterInfo::~ClusterInfo()
 {
 	// 子クラスタは同時に削除しないことにする
-//	if( child1_ )
-//	{
-//		delete child1_;
-//		child1_ = NULL;
-//	}
-//	if( child2_ )
-//	{
-//		delete child2_;
-//		child2_ = NULL;
-//	}
 	child1_ = NULL;
 	child2_ = NULL;
-
-	if( hook_ )
-	{
-		delete hook_;
-		hook_ = NULL;
-	}
 }
 
 
@@ -129,6 +113,20 @@ void ClusterInfo::setChildren( const ClusterInfo* child1, const ClusterInfo* chi
 	if( child2 ) addMembers( *( child2->getMembers() ) );
 	sort( members_.begin(), members_.end() );
 	return;
+}
+
+
+//! ID取得
+unsigned short ClusterInfo::getId() const
+{
+	return id_;
+}
+
+
+//! IDを設定
+void ClusterInfo::setId( unsigned short id )
+{
+	id_ = id;
 }
 
 

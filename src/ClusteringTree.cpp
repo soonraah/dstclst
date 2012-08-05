@@ -43,7 +43,7 @@ void deleteClusterRecursively( const ClusterInfo* pCluster )
 
 
 //! コンストラクタ
-ClusteringTree::ClusteringTree() : topLayer_(), interClusterDistance_(), pUpdatingFormula_( NULL ), memorySavingMode_( false )
+ClusteringTree::ClusteringTree() : topLayer_(), interClusterDistance_(), pUpdatingFormula_( NULL ), memorySavingMode_( false ), lastClusterId_( 0 )
 {
 }
 
@@ -103,6 +103,7 @@ void ClusteringTree::setInitialDistance( const DistanceTableAccessor* pDtAccesso
 		{
 			p = new ClusterInfo();
 			p->addMember( i );
+			p->setId( ++lastClusterId_ );
 			topLayer_[ i ] = p;
 		}
 	}
@@ -144,7 +145,8 @@ float ClusteringTree::buildOneStep( bool killChildren )
 	// 距離最小のクラスタをマージして新しいクラスタを作成
 	ClusterInfo* pMerged = new ClusterInfo( topLayer_[ clusterIndex1 ],
 											topLayer_[ clusterIndex2 ],
-											distMin );						// マージコスト = クラスタ間距離
+											distMin,						// マージコスト = クラスタ間距離
+											++lastClusterId_ );
 
 	// マージ後のクラスタを追加
 	addClusterIntoTopLayer( pMerged, clusterIndex1, clusterIndex2 );
