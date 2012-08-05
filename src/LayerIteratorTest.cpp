@@ -41,7 +41,7 @@ void LayerIteratorTest::SetUp()
 	p2 = new ClusterInfo();
 	p2->addMember( 2 );
 
-	p3 = new ClusterInfo( p1, p2, 200.0f );
+	p3 = new ClusterInfo( p1, p2, 200.0f, 5 );
 
 	p1 = new ClusterInfo();
 	p1->addMember( 3 );
@@ -49,9 +49,9 @@ void LayerIteratorTest::SetUp()
 	p2 = new ClusterInfo();
 	p2->addMember( 4 );
 
-	p1 = new ClusterInfo( p1, p2, 100.0f );
+	p1 = new ClusterInfo( p1, p2, 100.0f, 6 );
 
-	p2 = new ClusterInfo( p3, p1, 300.0f );
+	p2 = new ClusterInfo( p3, p1, 300.0f, 7 );
 
 	layer_.clear();
 	layer_.push_back( p2 );

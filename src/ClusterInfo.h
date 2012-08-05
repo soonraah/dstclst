@@ -26,7 +26,7 @@ namespace dstclst
 			@param[in] child2 子クラスタその2
 			@param[in] mergeCost マージコスト
 		*/
-		ClusterInfo( const ClusterInfo* child1, const ClusterInfo* child2, float mergeCost );
+		ClusterInfo( const ClusterInfo* child1, const ClusterInfo* child2, float mergeCost, unsigned short id );
 
 		//! デストラクタ
 		~ClusterInfo();
@@ -80,14 +80,26 @@ namespace dstclst
 		*/
 		void setChildren( const ClusterInfo* child1, const ClusterInfo* child2 );
 
+		//! ID取得
+		/*!
+			@return クラスタID
+		*/
+		unsigned short getId() const;
+
+		//! IDを設定
+		/*!
+			@param[in] id クラスタID
+		*/
+		void setId( unsigned short id );
+
 	protected:
 		std::vector< DataIndex >	members_;		//! クラスタのデータメンバ
 		const ClusterInfo*			child1_;		//! マージ前のクラスタその１
 		const ClusterInfo*			child2_;		//! マージ前のクラスタその２
 		float						mergeCost_;		//! このクラスタのマージコスト
-
+		unsigned short				id_;			//! クラスタID
 	public:
-		void*						hook_;			//! 追加情報（あれば）　※注意：voidポインタだとデストラクタは呼ばれないので、デストラクタ不要な型に限る。
+		// void*						hook_;			//! 追加情報（あれば）　※注意：voidポインタだとデストラクタは呼ばれないので、デストラクタ不要な型に限る。
 	};
 
 

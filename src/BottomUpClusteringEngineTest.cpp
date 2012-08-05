@@ -122,6 +122,9 @@ TEST_F( BottomUpClusteringEngineTest, test_makeTree )
 	}
 	ASSERT_EQ( 1000, n );
 
+	ASSERT_EQ( 1, pEngine_->beginClusterTree()->size() );
+	ASSERT_EQ( 1999, pEngine_->beginClusterTree()->front()->getId() );
+
 	// –Ø\‘¢‚ð‹ó‚É‚·‚é
 	pEngine_->clearClusterTree();
 	ASSERT_EQ( pEngine_->beginClusterTree(), pEngine_->endClusterTree() );

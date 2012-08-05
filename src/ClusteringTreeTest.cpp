@@ -73,6 +73,8 @@ TEST_F( ClusteringTreeTest, test_setInitialDistance )
 	EXPECT_EQ( 6, pTree_->getTopLayer()->size() );
 	EXPECT_EQ( 6, getInterClusterDistance()->size() );
 	// EXPECT_EQ( 6, getTableOrder()->size() );
+	EXPECT_EQ( 1, pTree_->getTopLayer()->front()->getId() );
+	EXPECT_EQ( 6, pTree_->getTopLayer()->back()->getId() );
 }
 
 
@@ -179,6 +181,7 @@ TEST_F( ClusteringTreeTest, test_buildContinuously )
 	ASSERT_EQ( 3, pTree_->getTopLayer()->back()->getMembers()->at( 3 ) );
 	ASSERT_EQ( 4, pTree_->getTopLayer()->back()->getMembers()->at( 4 ) );
 	ASSERT_EQ( 5, pTree_->getTopLayer()->back()->getMembers()->at( 5 ) );
+	ASSERT_EQ( 11, pTree_->getTopLayer()->back()->getId() );
 	
 	// 6回目（余分。木構造は維持）
 	ASSERT_EQ( -1.0f, pTree_->buildOneStep( false ) );	// -1を返す

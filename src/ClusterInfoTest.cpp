@@ -109,7 +109,7 @@ TEST_F( ClusterInfoTest, test_mergeConstructor )
 
 	const vector< DataIndex >* pMembers = NULL;
 
-	ClusterInfo *pCm = new ClusterInfo( pC1, pC2, 100.0f );
+	ClusterInfo *pCm = new ClusterInfo( pC1, pC2, 100.0f, 123 );
 
 	pMembers = pCm->getMembers();
 	ASSERT_EQ( 6, pMembers->size() );
@@ -120,6 +120,7 @@ TEST_F( ClusterInfoTest, test_mergeConstructor )
 	EXPECT_EQ( 5, pMembers->at( 4 ) );
 	EXPECT_EQ( 6, pMembers->at( 5 ) );
 	ASSERT_EQ( 100.0f, pCm->getMergeCost() );
+	ASSERT_EQ( 123, pCm->getId() );
 
 	delete pCm;
 	delete pC1;
