@@ -53,6 +53,12 @@ void BottomUpClusteringEngine::initTreeByInterDataDistance( const DistanceTableA
 		msg += e.what();
 		throw BottomUpClusteringEngineException( msg.c_str() );
 	}
+	catch( std::domain_error& e )
+	{
+		string msg( "Distance value is incorrect. : " );
+		msg += e.what();
+		throw BottomUpClusteringEngineException( msg.c_str() );
+	}
 }
 
 

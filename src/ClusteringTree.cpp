@@ -4,6 +4,7 @@
 
 
 #include <cfloat>
+#include <sstream>
 
 #include "ClusteringTree.h"
 
@@ -80,12 +81,27 @@ void ClusteringTree::setInitialDistance( const DistanceTableAccessor* pDtAccesso
 			for( unsigned int j = 0; j < i; ++j )
 			{
 				interClusterDistance_[ i ][ j ] = pDtAccessor->getDistanceAt( i, j );
+				if( interClusterDistance_[ i ][ j ] < 0.0f )	// ‹——£‚ª•‰‚Ì’l‚Ìê‡
+				{
+					ostringstream oss;
+					oss << "Distance[" << i << "][" << j << "] is negative value (" << interClusterDistance_[ i ][ j ] << ").";
+					throw std::domain_error( oss.str() );
+				}
 			}
 		}
 	}
 	catch( std::bad_alloc& e )
 	{
 		// ƒƒ‚ƒŠŠm•Û¸”s
+		interClusterDistance_.clear();
+		vector< vector< float > >( interClusterDistance_ ).swap( interClusterDistance_ );
+		topLayer_.clear();
+		ClusterArray( topLayer_ ).swap( topLayer_ );
+		throw std::bad_alloc( e.what() );
+	}
+	catch( std::domain_error& e )
+	{
+		// ‹——£‚ª•‰‚Ì’l‚Ìê‡
 		interClusterDistance_.clear();
 		vector< vector< float > >( interClusterDistance_ ).swap( interClusterDistance_ );
 		topLayer_.clear();
