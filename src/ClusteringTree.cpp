@@ -106,7 +106,7 @@ void ClusteringTree::setInitialDistance( const DistanceTableAccessor* pDtAccesso
 		vector< vector< float > >( interClusterDistance_ ).swap( interClusterDistance_ );
 		topLayer_.clear();
 		ClusterArray( topLayer_ ).swap( topLayer_ );
-		throw std::bad_alloc( e.what() );
+		throw std::domain_error( e.what() );
 	}
 
 	// 木構造の底辺部分（現時点ではtopLayer）のクラスタを作成
