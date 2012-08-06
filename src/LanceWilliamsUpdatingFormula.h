@@ -154,6 +154,54 @@ namespace dstclst
 			unsigned int num_2
 		) const;
 	};
+
+	//! セントロイド法
+	class FormulaCentroid : public LanceWilliamsUpdatingFormula
+	{
+	public:
+		//! 関数オブジェクトとして扱うための()演算子オーバーロード
+		/*!
+			@param[in] dist_1a2 C1aとC2間の距離
+			@param[in] dist_1b2 C1bとC2間の距離
+			@param[in] dist_1a1b C1aとC1b間の距離
+			@param[in] num_1a C1aのメンバ数
+			@param[in] num_1b C1bのメンバ数
+			@param[in] num_2 C2のメンバ数
+			@return C1-C2間の距離
+		*/
+		float operator()(
+			float dist_1a2,
+			float dist_1b2,
+			float dist_1a1b,
+			unsigned int num_1a,
+			unsigned int num_1b,
+			unsigned int num_2
+		) const;
+	};
+
+	//! メジアン法
+	class FormulaMedian : public LanceWilliamsUpdatingFormula
+	{
+	public:
+		//! 関数オブジェクトとして扱うための()演算子オーバーロード
+		/*!
+			@param[in] dist_1a2 C1aとC2間の距離
+			@param[in] dist_1b2 C1bとC2間の距離
+			@param[in] dist_1a1b C1aとC1b間の距離
+			@param[in] num_1a C1aのメンバ数
+			@param[in] num_1b C1bのメンバ数
+			@param[in] num_2 C2のメンバ数
+			@return C1-C2間の距離
+		*/
+		float operator()(
+			float dist_1a2,
+			float dist_1b2,
+			float dist_1a1b,
+			unsigned int num_1a,
+			unsigned int num_1b,
+			unsigned int num_2
+		) const;
+	};
 }
 
 

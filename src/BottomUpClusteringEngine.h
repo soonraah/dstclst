@@ -19,7 +19,9 @@ namespace dstclst
 		NEAREST,		// 最短距離法
 		FURTHEST,		// 最長距離法
 		GROUP_AVG,		// 群平均法
-		WARD			// ウォード法（おすすめ）
+		WARD,			// ウォード法（おすすめ）
+		CENTROID,		// セントロイド法
+		MEDIAN			// メジアン法
 	};
 
 	//! ボトムアップクラスタリングを管理するクラス

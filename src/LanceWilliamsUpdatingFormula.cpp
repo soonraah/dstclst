@@ -86,3 +86,35 @@ float FormulaWard::operator()(
 	return formula( dist_1a2, dist_1b2, dist_1a1b, alpha_a, alpha_b, beta, 0.0f );
 }
 
+
+//! セントロイド法
+float FormulaCentroid::operator()(
+	float dist_1a2,
+	float dist_1b2,
+	float dist_1a1b,
+	unsigned int num_1a,
+	unsigned int num_1b,
+	unsigned int num_2
+) const
+{
+	unsigned int n1 = num_1a + num_1b;
+	float alpha_a = static_cast< float >( num_1a ) / n1;
+	float alpha_b = static_cast< float >( num_1b ) / n1;
+	float beta = ( -1.0f ) * ( num_1a * num_1b ) / ( n1 * n1 );
+	return formula( dist_1a2, dist_1b2, dist_1a1b, alpha_a, alpha_b, beta, 0.0f );
+}
+
+
+//! メジアン法
+float FormulaMedian::operator()(
+	float dist_1a2,
+	float dist_1b2,
+	float dist_1a1b,
+	unsigned int num_1a,
+	unsigned int num_1b,
+	unsigned int num_2
+) const
+{
+	return formula( dist_1a2, dist_1b2, dist_1a1b, 0.5f, 0.5f, -0.25f, 0.0f );
+}
+

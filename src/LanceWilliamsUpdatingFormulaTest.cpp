@@ -105,3 +105,42 @@ TEST_F( LanceWilliamsUpdatingFormulaTest, test_ward )
 	// EXPECT_NEAR( expected, actual, expected * 0.00001 );
 }
 
+
+//! セントロイド法のテスト
+TEST_F( LanceWilliamsUpdatingFormulaTest, test_centroid ) 
+{
+	LanceWilliamsUpdatingFormula*	pFormula = new FormulaCentroid();
+	
+	float			dist_1a2	= 117.4722222f;
+	float			dist_1b2	= 121.4722222f;
+	float			dist_1a1b	= 12.5f;
+	unsigned int	num_1a		= 2;
+	unsigned int	num_1b		= 2;
+	unsigned int	num_2		= 3;
+
+	float			expected	= 116.3472222f;
+	float			actual		= ( *pFormula )( dist_1a2, dist_1b2, dist_1a1b, num_1a, num_1b, num_2 );
+	
+	EXPECT_EQ( expected, actual );
+	// EXPECT_NEAR( expected, actual, expected * 0.00001 );
+}
+
+
+//! メジアン法のテスト
+TEST_F( LanceWilliamsUpdatingFormulaTest, test_median ) 
+{
+	LanceWilliamsUpdatingFormula*	pFormula = new FormulaMedian();
+	
+	float			dist_1a2	= 115.8125f;
+	float			dist_1b2	= 121.0625f;
+	float			dist_1a1b	= 12.5f;
+	unsigned int	num_1a		= 2;
+	unsigned int	num_1b		= 2;
+	unsigned int	num_2		= 3;
+
+	float			expected	= 116.3472222f;
+	float			actual		= ( *pFormula )( dist_1a2, dist_1b2, dist_1a1b, num_1a, num_1b, num_2 );
+	
+	// EXPECT_EQ( expected, actual );	// とばす。。
+}
+

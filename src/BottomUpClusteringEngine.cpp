@@ -108,6 +108,12 @@ void BottomUpClusteringEngine::doClustering(
 	case WARD:
 		pUpdatingFormula = new FormulaWard();
 		break;
+	case CENTROID:
+		pUpdatingFormula = new FormulaCentroid();
+		break;
+	case MEDIAN:
+		pUpdatingFormula = new FormulaMedian();
+		break;
 	default:
 		throw BottomUpClusteringEngineException( "Given inter-cluster distance is not supported." );
 	}
