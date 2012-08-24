@@ -139,7 +139,18 @@ bool PredicateClusterPtr::operator()( const ClusterInfo* pLeft, const ClusterInf
 	}
 	else if( pLeft->getMergeCost() == pRight->getMergeCost() )
 	{
-		return pLeft->getMembers()->at( 0 ) < pRight->getMembers()->at( 0 );
+		if( pLeft->getMembers()->size() > pRight->getMembers()->size() )
+		{
+			return true;
+		}
+		else if( pLeft->getMembers()->size() == pRight->getMembers()->size() )
+		{
+			return pLeft->getMembers()->at( 0 ) < pRight->getMembers()->at( 0 );
+		}
+		else
+		{
+			return false;
+		}
 	}
 	else
 	{

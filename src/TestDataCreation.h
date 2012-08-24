@@ -1038,3 +1038,31 @@ void setDataDistance1( std::vector< std::vector< float > >& distTbl )
 
 	return;
 }
+
+
+//! 距離が0の関係を含む距離テーブルを作る
+void setDataDistance2( std::vector< std::vector< float > >& distTbl )
+{
+	int numData = 10;
+
+	// 領域の確保
+	distTbl.clear();
+	distTbl.reserve( numData );
+	distTbl.resize( numData );
+	for( int i = 0; i < numData; ++i )
+	{
+		distTbl[ i ].reserve( i );
+		distTbl[ i ].resize( i );
+	}
+
+	// 距離格納
+	for( int i = 0; i < numData; ++i )
+	{
+		for( int j = 0; j < i; ++j )
+		{
+			// (5, 4)のみ距離1.0で他は0にする。
+			distTbl[ i ][ j ] = ( i == 5 && j == 4 ) ? 1.0f : 0.0f;
+		}
+	}
+
+}
